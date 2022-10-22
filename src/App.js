@@ -13,6 +13,11 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [movieId, setMovieId] = useState(0);
   const [isVideo, setVideo] = useState(0);
+  const [isClicked, setCLicked] = useState(false);
+
+  const handleCLick = () => {
+    setCLicked(!isClicked);
+  }
 
   const searchMovies = async () => {
     // console.log(searchTerm)
@@ -63,7 +68,6 @@ const App = () => {
           src={SearchIcon}
           alt="search"
           onClick={() => searchMovies()}
-          
         />
       </div>
       {/* <iframe width="420" height="315"
@@ -71,10 +75,10 @@ const App = () => {
       </iframe> */}
       {movies.length > 0 ? (
         <div className="container">
-          {isVideo && <VideoCard MOVIE_ID={movieId}/>}
+          {isVideo && <VideoCard MOVIE_ID={movieId} isClicked={isClicked} handleCLick={handleCLick}/>}
           {movies.map((movie, index) => (
             <div key={movie['id']} movie_id={movie['id']} onClick={setVideoPlayer}>
-              <MovieCard movie={movie}/>
+              <MovieCard movie={movie} isClicked={isClicked} handleCLick={handleCLick}/>
             </div>
           ))}
         </div>
@@ -88,3 +92,10 @@ const App = () => {
 };
 
 export default App;
+
+
+// <Popup trigger={<button> Click to open popup </button>} 
+//      position="right center">
+//       <div>GeeksforGeeks</div>
+//       <button>Click here</button>
+//     </Popup>

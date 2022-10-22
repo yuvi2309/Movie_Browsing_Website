@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import {React, useState} from "react";
 const API_KEY = "cee6eafd51620e5fae4e160b42c17fe5";
 
-const VideoCard = (MOVIE_ID) => {
+const VideoCard = (MOVIE_ID, isClicked, handleClick) => {
     const [video_code, setcode] = useState(0);
 
     useEffect(()=>{
@@ -17,7 +17,11 @@ const VideoCard = (MOVIE_ID) => {
     },[MOVIE_ID])
 
     return (
-        <iframe width="1500" height="836" src={`https://www.youtube.com/embed/${video_code}`}></iframe>
+            <div className={isClicked ? "VideoDiv VideoDiv-active" : "VideoDiv"}>
+                <button type="button" onClick={handleClick}>Close</button>
+                <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${video_code}`}></iframe>
+            </div>
+
     );
 
 }
