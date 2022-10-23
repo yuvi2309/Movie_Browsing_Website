@@ -13,10 +13,10 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [movieId, setMovieId] = useState(0);
   const [isVideo, setVideo] = useState(0);
-  const [isClicked, setCLicked] = useState(false);
+  const [isClicked, setClicked] = useState(false);
 
-  const handleCLick = () => {
-    setCLicked(!isClicked);
+  const handleClick = () => {
+    setClicked(!isClicked);
   }
 
   const searchMovies = async () => {
@@ -35,6 +35,7 @@ const App = () => {
     const MOVIE_ID = e.currentTarget.getAttribute('movie_id');
     setVideo(1);
     setMovieId(MOVIE_ID);
+    setClicked(!isClicked);
   }
 
   // const playMovie = async (e) => { 
@@ -75,10 +76,10 @@ const App = () => {
       </iframe> */}
       {movies.length > 0 ? (
         <div className="container">
-          {isVideo && <VideoCard MOVIE_ID={movieId} isClicked={isClicked} handleCLick={handleCLick}/>}
+          {(isVideo && isClicked) && <VideoCard MOVIE_ID={movieId} isClicked={isClicked} setClicked={setClicked}/>}
           {movies.map((movie, index) => (
             <div key={movie['id']} movie_id={movie['id']} onClick={setVideoPlayer}>
-              <MovieCard movie={movie} isClicked={isClicked} handleCLick={handleCLick}/>
+              <MovieCard movie={movie} isClicked={isClicked} handleClick={handleClick}/>
             </div>
           ))}
         </div>

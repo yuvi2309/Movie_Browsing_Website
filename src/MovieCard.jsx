@@ -53,9 +53,6 @@ const MovieCard = (movie, isClicked, handleClick) => {
           <div class="descriptions">
               <h1>{movie.movie['title']}</h1>
               <p>{movie.movie['overview']}</p>
-              <button onClick={handleClick}>
-                  <i class="fab fa-youtube"></i>
-                  Play Video                </button>
           </div>
         </div>
     </div>
