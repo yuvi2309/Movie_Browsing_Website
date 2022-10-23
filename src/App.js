@@ -9,7 +9,7 @@ const API_KEY = "cee6eafd51620e5fae4e160b42c17fe5";
 const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`
 // var dum;
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState("batman");
+  const [searchTerm, setSearchTerm] = useState("Movie");
   const [movies, setMovies] = useState([]);
   const [movieId, setMovieId] = useState(0);
   const [isVideo, setVideo] = useState(0);
